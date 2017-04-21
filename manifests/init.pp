@@ -1,41 +1,43 @@
 # Class: gnu_build_system
 # ===========================
 #
-# Full description of class gnu_build_system here.
+# Installs required packages to manage the GNU Build System.
 #
 # Parameters
 # ----------
 #
-# Document parameters here.
+# gcc_manage (boolean)
+#   Specifies whether to install compiler packages
+#   Default => true
 #
-# * `sample parameter`
-# Explanation of what this parameter affects and what it defaults to.
-# e.g. "Specify one or more upstream ntp servers as an array."
+# gcc_packages (string or hash)
+#   Specifies which compiler packages to install
+#   Default => undef (uses packages determined in puppetlabs-gcc module)
 #
-# Variables
-# ----------
+# make_manage (boolean)
+#   Specifies whether to install make
+#   Default => true
 #
-# Here you should define a list of variables that this module would require.
-#
-# * `sample variable`
-#  Explanation of how this variable affects the function of this class and if
-#  it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#  External Node Classifier as a comma separated list of hostnames." (Note,
-#  global variables should be avoided in favor of class parameters as
-#  of Puppet 2.6.)
+# make_package (string)
+#   Specifies which compiler package to install
+#   Default => undef (uses package determined in puppet-make module)
 #
 # Examples
 # --------
 #
-# @example
+# @example - Installs default OS compiler and make
+#   include gnu_build_system
+#
+# @example - Installs 'make-guile' instead of 'make' and doesn't mess with gcc
 #    class { 'gnu_build_system':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
+#      gcc_manage   => false,
+#      make_package => 'make-guile',
 #    }
 #
 # Authors
 # -------
 #
-# Author Name <author@domain.com>
+# Emerson Prado <emerson.prado.eng@gmail.com>
 #
 # Copyright
 # ---------
