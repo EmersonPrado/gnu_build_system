@@ -14,7 +14,7 @@
 
 ## Description
 
-Manages packages created in the GNU Build System. That is: install stuff by the good old `./configure` and `make <target>` sequence.
+Manages packages created in the GNU Build System with Puppet. That is: install stuff by the good old `./configure` and `make <target>` sequence.
 
 This module aims to replace a tedious series of `exec`s needed if one is managing packages from "tarballs" and such.
 
