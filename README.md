@@ -14,38 +14,32 @@
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what
-problem it solves. This is your 30-second elevator pitch for your module.
-Consider including OS/Puppet version it works with.
+Manages packages created in the GNU Build System. That is: install stuff by the good old `./configure` and `make <target>` sequence.
 
-You can give more descriptive information in a second paragraph. This paragraph
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?" If your module has a range of functionality (installation, configuration,
-management, etc.), this is the time to mention it.
+This module aims to replace a tedious series of `exec`s needed if one is managing packages from "tarballs" and such.
+
+> So far, it only installs `gcc` and `make` packages. Development is quite early still.
+
+> Be advised that this kind of installation is considered a Bad Thing when using a configuration manager like Puppet. See [here](https://ask.puppet.com/question/23/how-can-i-use-puppet-to-build-from-source/), [here](https://superuser.com/questions/415047/install-a-source-package-with-puppet) and [here](http://stackoverflow.com/questions/41425506/using-puppet-to-build-from-source) for some opinions. Use this module as a last resort.
 
 ## Setup
 
-### What gnu_build_system affects **OPTIONAL**
+### What gnu_build_system affects
 
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
+gnu_build_system installs `gcc` and `make` packages. By `gcc` packages, it means the whole set of packages required for compilation in your OS.
 
-If there's more that they should know about, though, this is the place to mention:
+### Setup Requirements
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section
-here.
+- OS
+  - RedHat 5, 6 and 7 and derivatives
+  - Debian 6 and 7 and derivatives
+- Packages
+  - Puppet >= 3.8.7 < 4.0.0
+  - ruby
+- Modules
+  - [puppetlabs/stdlib](https://forge.puppet.com/puppetlabs/stdlib) (>= 4.15.0 < 5.0.0)
+  - [puppetlabs/gcc](https://forge.puppet.com/puppetlabs/gcc) (>= 0.3.0 < 1.0.0)
+  - [puppet/make](https://forge.puppet.com/puppet/make) (>= 1.0.0 < 2.0.0)
 
 ### Beginning with gnu_build_system
 
