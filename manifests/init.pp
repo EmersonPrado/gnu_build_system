@@ -42,7 +42,23 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class gnu_build_system {
+class gnu_build_system (
+  $gcc_manage   = true,
+  $gcc_packages = undef,
+  $make_manage  = true,
+  $make_package = undef,
+){
 
+  if $gcc_manage {
+    class { 'gcc':
+      gcc_packages => $gcc_packages,
+    }
+  }
+
+  if $make_manage {
+    class { 'make':
+      package_name => $make_package,
+    }
+  }
 
 }
