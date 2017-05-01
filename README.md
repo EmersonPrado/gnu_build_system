@@ -41,6 +41,8 @@ gnu_build_system installs `gcc` and `make` packages. By `gcc` packages, it means
   - [puppetlabs/gcc](https://forge.puppet.com/puppetlabs/gcc) (>= 0.3.0 < 1.0.0)
   - [puppet/make](https://forge.puppet.com/puppet/make) (>= 1.0.0 < 2.0.0)
 
+> Recommended module: [puppet/archive](https://forge.puppet.com/puppet/archive) - downloads and extracts compressed files, including tarballs
+
 ### Beginning with gnu_build_system
 
 The very basic steps needed for a user to get the module up and running. This
