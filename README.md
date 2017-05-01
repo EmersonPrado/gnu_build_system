@@ -57,10 +57,16 @@ examples and code samples for doing things with your module.
 
 ## Reference
 
-Here, include a complete list of your module's classes, types, providers,
-facts, along with the parameters for each. Users refer to this section (thus
-the name "Reference") to find specific details; most users don't read it per
-se.
+### class `gnu_build_system`
+
+| Parameter    | Description                           | Type    | Default |
+|--------------|---------------------------------------|---------|---------|
+| gcc_manage   | Whether to install gcc packages       | Boolean | true    |
+| gcc_packages | Alternative list of compiler packages | Array   | undef*  |
+| make_manage  | Whether to install make package       | Boolean | true    |
+| make_package | Alternative make package              | String  | undef*  |
+
+\* - Uses typical OS packages, determined by `make` module
 
 ## Limitations
 
