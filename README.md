@@ -18,7 +18,7 @@ Manages packages created in the GNU Build System with Puppet. That is: install s
 
 This module aims to replace a tedious series of `exec`s needed if one is managing packages from "tarballs" and such.
 
-> So far, it only installs `gcc` and `make` packages. Development is quite early still.
+> So far, it only installs `gcc` and `make` packages and runs `./configure`. `make` is not implemented yet.
 
 > Be advised that this kind of installation is considered a Bad Thing when using a configuration manager like Puppet. See [here](https://ask.puppet.com/question/23/how-can-i-use-puppet-to-build-from-source/), [here](https://superuser.com/questions/415047/install-a-source-package-with-puppet) and [here](http://stackoverflow.com/questions/41425506/using-puppet-to-build-from-source) for some opinions. Use this module as a last resort.
 
@@ -67,6 +67,16 @@ examples and code samples for doing things with your module.
 | make_package | Alternative make package              | String  | undef*  |
 
 \* - Uses typical OS packages, determined by `make` module
+
+### Defined type `gnu_build_system::configure`
+
+| Parameter    | Description                              | Type    | Default              |
+|--------------|------------------------------------------|---------|----------------------|
+| path         | Directory where to run `./configure`     | String  | Resource title       |
+| opts         | Command-line options for `./configure`   | Array   | None                 |
+| vars         | Command-line variables for `./configure` | Array   | None                 |
+| user         | User for `./configure` execution         | String  | User running Puppet  |
+| group        | Group for `./configure` execution        | String  | Group running Puppet |
 
 ## Limitations
 
