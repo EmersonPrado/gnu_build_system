@@ -39,7 +39,8 @@ define gnu_build_system::configure (
   exec { "${path}/configure":
     command => $command,
     cwd     => $path,
-    path    => [$path],
+    path    => ['/bin','/usr/bin',$path],
+    unless  => 'test Makefile -nt configure',
   }
 
 }
