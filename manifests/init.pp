@@ -42,7 +42,7 @@
 # Copyright
 # ---------
 #
-# Copyright 2017 Your name here, unless otherwise noted.
+# Copyright 2017 Emerson Prado.
 #
 class gnu_build_system (
   $gcc_manage   = true,
