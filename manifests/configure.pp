@@ -10,6 +10,14 @@
 #     > The path to the directory containing 'configure',
 #     > not to 'configure' executable itself
 #
+# opts (array of strings)
+#   Command-line options for ./configure
+#   Default => none
+#
+# vars (array of strings)
+#   Command-line variables for ./configure
+#   Default => none
+#
 # Authors
 # -------
 #
@@ -22,10 +30,14 @@
 #
 define gnu_build_system::configure (
   $path  = $title,
+  $opts  = [],
+  $vars  = [],
 ) {
 
+  $command = join(concat(['configure'], $opts, $vars), ' ')
+
   exec { "${path}/configure":
-    command => 'configure',
+    command => $command,
     cwd     => $path,
     path    => [$path],
   }
