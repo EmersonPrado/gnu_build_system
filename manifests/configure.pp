@@ -18,6 +18,14 @@
 #   Command-line variables for ./configure
 #   Default => none
 #
+# user (string)
+#   User which executes ./configure
+#   Default => User running Puppet agent (typically root)
+#
+# group (string)
+#   Group which executes ./configure
+#   Default => Group running Puppet agent (typically root)
+#
 # Authors
 # -------
 #
@@ -32,6 +40,8 @@ define gnu_build_system::configure (
   $path  = $title,
   $opts  = [],
   $vars  = [],
+  $user  = undef,
+  $group = undef,
 ) {
 
   $command = join(concat(['configure'], $opts, $vars), ' ')
@@ -39,6 +49,8 @@ define gnu_build_system::configure (
   exec { "${path}/configure":
     command => $command,
     cwd     => $path,
+    user    => $user,
+    group   => $group,
     path    => ['/bin','/usr/bin',$path],
     unless  => 'test Makefile -nt configure',
   }
