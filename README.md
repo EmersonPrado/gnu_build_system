@@ -18,15 +18,16 @@ Manages packages created in the GNU Build System with Puppet. That is: install s
 
 This module aims to replace a tedious series of `exec`s needed if one is managing packages from "tarballs" and such.
 
-> So far, it only installs `gcc` and `make` packages and runs `./configure`. `make` is not implemented yet.
+> Still uses `exec` resource. I hope to get it right and have custom types in the future.
 
-> Be advised that this kind of installation is considered a Bad Thing when using a configuration manager like Puppet. See [here](https://ask.puppet.com/question/23/how-can-i-use-puppet-to-build-from-source/), [here](https://superuser.com/questions/415047/install-a-source-package-with-puppet) and [here](http://stackoverflow.com/questions/41425506/using-puppet-to-build-from-source) for some opinions. Use this module as a last resort.
+> Be advised that this kind of installation is considered a **Bad Thing** when using a configuration manager like Puppet. See [here](https://ask.puppet.com/question/23/how-can-i-use-puppet-to-build-from-source/), [here](https://superuser.com/questions/415047/install-a-source-package-with-puppet) and [here](http://stackoverflow.com/questions/41425506/using-puppet-to-build-from-source) for some opinions. Use this module as a last resort.
 
 ## Setup
 
 ### What gnu_build_system affects
 
-gnu_build_system installs `gcc` and `make` packages. By `gcc` packages, it means the whole set of packages required for compilation in your OS.
+- Installs `gcc` and `make` packages. By `gcc` packages, it means the whole set of packages required for compilation in your OS.
+- Compiles and installs whatever unpacked package you run these commands on
 
 ### Setup Requirements
 
