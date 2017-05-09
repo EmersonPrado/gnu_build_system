@@ -77,6 +77,39 @@ class { 'gnu_build_system':
 
 > For information on default packages, pls see [gcc](https://forge.puppet.com/puppetlabs/gcc) and [make](https://forge.puppet.com/puppet/make) modules
 
+### Running './configure'
+
+Declare the defined type `gnu_build_system::configure`, specifying the directory where the configure script is located and optional parameters.
+
+If you just want to run `./configure`, without setting options or variables, and with the same user and group which runs the Puppet agent, only the path is needed:
+```
+gnu_build_system::configure { '<Directory>': }
+```
+Or
+```
+gnu_build_system::configure { '<Unique name>':
+  path => '<Directory>',
+}
+```
+
+To pass custom options and/or variables to `./configure`, just include 'opts' and/or 'vars' parameters **as arrays**:
+```
+gnu_build_system::configure { '<Unique name>':
+  path => '<Directory>',
+  opts => ['<Option 1>', '<Option 2>'...],
+  vars => ['<Variable 1>=<Value>', '<Variable 2>=<Value>'...],
+}
+```
+
+To run `./configure` with different user and/or group, just user 'user' and/or 'group' parameters:
+
+```
+gnu_build_system::configure { '<Unique name>':
+  path  => '<Directory>',
+  user  => '<User>',
+  group => '<Group>',
+}
+```
 
 ## Reference
 
