@@ -79,6 +79,17 @@ examples and code samples for doing things with your module.
 | user         | User for `./configure` execution         | String  | User running Puppet  |
 | group        | Group for `./configure` execution        | String  | Group running Puppet |
 
+### Defined type `gnu_build_system::make`
+
+| Parameter    | Description                           | Type    | Default              |
+|--------------|---------------------------------------|---------|----------------------|
+| path         | Directory where to run `make`         | String  | Required             |
+| opts         | Command-line options for `make`       | Array   | None                 |
+| target       | `make` target                         | String  | None                 |
+| creates      | Target file to check before execution | String  | None (don't check)   |
+| user         | User for `make` execution             | String  | User running Puppet  |
+| group        | Group for `make` execution            | String  | Group running Puppet |
+
 ## Limitations
 
 This is where you list OS compatibility, version compatibility, etc. If there
