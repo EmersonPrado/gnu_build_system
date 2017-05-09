@@ -28,6 +28,13 @@ define gnu_build_system::make (
   }
   else {
     $check = "test Makefile -nt ${creates}"
+    exec { "touch ${path}/${creates}":
+      user        => $user,
+      group       => $group,
+      path        => ['/bin','/usr/bin'],
+      subscribe   => Exec["${path}/${command}"],
+      refreshonly => true,
+    }
   }
 
   exec { "${path}/${command}":
