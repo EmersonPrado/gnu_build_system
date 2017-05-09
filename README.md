@@ -92,13 +92,15 @@ examples and code samples for doing things with your module.
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc. If there
-are Known Issues, you might want to include them under their own heading here.
+This module is intended to run in any GNU Build System compatible Linux, but was tested in very few situations.
+
+There is no input validation yet.
+
+Target files timestamp checking is still done in only one file.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+Pls follow general [guidelines](https://docs.puppet.com/forge/contributing.html) from Puppet Forge and Puppet [language style guide](https://docs.puppet.com/puppet/4.10/style_guide.html). Pls also run any changed code thru tools like `puppet parser validate` and `puppet-lint` and, of course, test the code.
 
 ## Contributors
 
