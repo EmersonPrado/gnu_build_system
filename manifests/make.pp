@@ -24,6 +24,29 @@
 #   Group which executes make
 #   Default => Group running Puppet agent (typically root)
 #
+# Examples
+# --------
+#
+# @example - Runs make without options or variables
+#   gnu_build_system::make { 'x_speed/make':
+#     path => '/home/cliff_burton/src/x_speed',
+#   }
+#
+# @example - Runs make install silently with additional makefile directory
+#   gnu_build_system::make { 'bernoulli/make install':
+#     path   => '/home/ada_lovelace/easy_stuff/bernoulli',
+#     opts   => ['-s', '-I /usr/src/babbage'],
+#     target => 'install',
+#   }
+#
+# @example - Runs make check with different user and group
+#   gnu_build_system::make { 'shrubbery/make check':
+#     path   => '/tmp/shrubbery',
+#     target => 'check',
+#     user   => 'head_knight',
+#     group  => 'knights_of_ni',
+#   }
+#
 # Authors
 # -------
 #
