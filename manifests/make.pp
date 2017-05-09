@@ -14,10 +14,14 @@
 #
 define gnu_build_system::make (
   $path,
+  $opts    = [],
+  $target  = undef,
 ) {
 
-  exec { "${path}/make":
-    command => 'make',
+  $command = join(concat(['make'], $opts, $target), ' ')
+
+  exec { "${path}/${command}":
+    command => $command,
     cwd     => $path,
     path    => ['/bin','/usr/bin'],
   }
