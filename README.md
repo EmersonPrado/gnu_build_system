@@ -52,9 +52,31 @@ basic use of the module.
 
 ## Usage
 
-This section is where you describe how to customize, configure, and do the
-fancy stuff with your module here. It's especially helpful if you include usage
-examples and code samples for doing things with your module.
+### Installing `gcc` and `make`
+
+Just including the main class will suffice for most cases:
+```
+include gnu_build_system
+```
+
+If you need to manage only `gcc` or `make`, as opposed to both packages, use `_manage` parameter to disable management of the other package:
+```
+class { 'gnu_build_system':
+  gcc_manage  => false, # Or
+  make_manage => false,
+}
+```
+
+To manage packages other than the defaults, use `_package(s)` parameters:
+```
+class { 'gnu_build_system':
+  gcc_packages => ['<Package 1>', '<Package 2>'...], # And/or
+  make_package => '<Alternative make>',
+}
+```
+
+> For information on default packages, pls see [gcc](https://forge.puppet.com/puppetlabs/gcc) and [make](https://forge.puppet.com/puppet/make) modules
+
 
 ## Reference
 
