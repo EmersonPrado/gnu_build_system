@@ -111,6 +111,36 @@ gnu_build_system::configure { '<Unique name>':
 }
 ```
 
+### Running 'make'
+
+Declare the defined type `gnu_build_system::make`, specifying the directory where the Makefile is located and optional parameters.
+
+If you just want to run `make`, without setting options or a target, and with the same user and group which runs the Puppet agent, only the path is needed:
+```
+gnu_build_system::make { '<Unique name>':
+  path => '<Directory>',
+}
+```
+
+To pass custom options and/or a target (like 'install' or 'check') to `make`, just include 'opts' and/or 'target' parameters. The 'opts' parameter should be passed **as an array**:
+```
+gnu_build_system::make { '<Unique name>':
+  path   => '<Directory>',
+  opts   => ['<Option 1>', '<Option 2>'...],
+  target => '<Target>',
+}
+```
+
+To run `make` with different user and/or group, just user 'user' and/or 'group' parameters:
+
+```
+gnu_build_system::make { '<Unique name>':
+  path  => '<Directory>',
+  user  => '<User>',
+  group => '<Group>',
+}
+```
+
 ## Reference
 
 ### class `gnu_build_system`
