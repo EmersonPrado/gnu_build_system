@@ -66,13 +66,17 @@ define gnu_build_system::make (
   $group   = undef,
 ) {
 
+  # Shell command line
   $command = join(concat(['make'], $opts, $target), ' ')
 
+  # If user specified target file, creates shell command line test
+  # to check whether it's newer than Makefile
   if $creates == undef {
     $check = 'true'
   }
   else {
     $check = "test Makefile -nt ${creates}"
+    # Updates timestamp of target file to avoid unnecessary runs
     exec { "touch ${path}/${creates}":
       user        => $user,
       group       => $group,
@@ -82,6 +86,8 @@ define gnu_build_system::make (
     }
   }
 
+  # Runs 'make' unless target file specified
+  # is newer than Makefile
   exec { "${path}/${command}":
     command => $command,
     cwd     => $path,

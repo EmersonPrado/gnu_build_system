@@ -66,8 +66,11 @@ define gnu_build_system::configure (
   $group = undef,
 ) {
 
+  # Shell command line
   $command = join(concat(['configure'], $opts, $vars), ' ')
 
+  # Runs './configure' unless target file Makefile
+  # is newer than configure script
   exec { "${path}/configure":
     command => $command,
     cwd     => $path,
