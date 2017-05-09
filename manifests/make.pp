@@ -2,6 +2,28 @@
 #
 # Runs 'make' in a given directory
 #
+# Parameters
+#
+# path (string)
+#   Directory where make should be executed
+#   Required
+#
+# opts (array of strings)
+#   Command-line options for make
+#   Default => none
+#
+# target (string)
+#   make target
+#   Default => none
+#
+# user (string)
+#   User which executes make
+#   Default => User running Puppet agent (typically root)
+#
+# group (string)
+#   Group which executes make
+#   Default => Group running Puppet agent (typically root)
+#
 # Authors
 # -------
 #
