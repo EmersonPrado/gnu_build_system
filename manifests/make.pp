@@ -16,11 +16,19 @@ define gnu_build_system::make (
   $path,
   $opts    = [],
   $target  = undef,
+  $creates = undef,
   $user    = undef,
   $group   = undef,
 ) {
 
   $command = join(concat(['make'], $opts, $target), ' ')
+
+  if $creates == undef {
+    $check = 'true'
+  }
+  else {
+    $check = "test Makefile -nt ${creates}"
+  }
 
   exec { "${path}/${command}":
     command => $command,
@@ -28,6 +36,7 @@ define gnu_build_system::make (
     user    => $user,
     group   => $group,
     path    => ['/bin','/usr/bin'],
+    onlyif  => $check,
   }
 
 }
