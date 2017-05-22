@@ -77,7 +77,11 @@ define gnu_build_system::make (
   else {
     $check = "test Makefile -nt ${creates}"
     # Updates timestamp of target file to avoid unnecessary runs
-    exec { "touch ${path}/${creates}":
+    $creates_path = $creates ? {
+      /^\//   => $creates,
+      default => "${path}/${creates}",
+    }
+    exec { "touch ${creates_path}":
       user        => $user,
       group       => $group,
       path        => ['/bin','/usr/bin'],
