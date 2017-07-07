@@ -59,11 +59,12 @@
 # Copyright 2017 Emerson Prado.
 #
 define gnu_build_system::configure (
-  $path  = $title,
-  $opts  = [],
-  $vars  = [],
-  $user  = undef,
-  $group = undef,
+  $path     = $title,
+  $opts     = [],
+  $vars     = [],
+  $bin_path = ['/bin','/usr/bin'],
+  $user     = undef,
+  $group    = undef,
 ) {
 
   # Shell command line
@@ -76,7 +77,7 @@ define gnu_build_system::configure (
     cwd     => $path,
     user    => $user,
     group   => $group,
-    path    => ['/bin','/usr/bin',$path],
+    path    => concat($bin_path, $path),
     unless  => 'test Makefile -nt configure',
   }
 
