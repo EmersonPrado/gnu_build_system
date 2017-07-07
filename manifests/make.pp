@@ -16,6 +16,11 @@
 #   make target
 #   Default => none
 #
+# bin_path (array of strings)
+#   Path for the make executable
+#   and eventual command-line stuff
+#   Default => ['/bin','/usr/bin']
+#
 # user (string)
 #   User which executes make
 #   Default => User running Puppet agent (typically root)
