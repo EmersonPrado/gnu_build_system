@@ -18,6 +18,11 @@
 #   Command-line variables for ./configure
 #   Default => none
 #
+# bin_path (array of strings)
+#   Path for the executables required by ./configure
+#   and eventual command-line stuff
+#   Default => ['/bin','/usr/bin']
+#
 # user (string)
 #   User which executes ./configure
 #   Default => User running Puppet agent (typically root)
@@ -40,6 +45,12 @@
 #       '--prefix=/opt/bernoulli/noarch',
 #       '--exec-prefix=/opt/bernoulli/amd64',
 #     ],
+#   }
+#
+# @example - Runs ./configure using which to determine binary full path
+#   gnu_build_system::configure { '/tmp/mod_jk':
+#     vars     => '--with-apxs=`which apxs || which apxs2`',
+#     bin_path => ['/bin','/usr/bin','/sbin','/usr/sbin'],
 #   }
 #
 # @example - Runs ./configure with different user and group
