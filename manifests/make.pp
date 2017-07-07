@@ -59,11 +59,12 @@
 #
 define gnu_build_system::make (
   $path,
-  $opts    = [],
-  $target  = undef,
-  $creates = undef,
-  $user    = undef,
-  $group   = undef,
+  $opts     = [],
+  $target   = undef,
+  $creates  = undef,
+  $bin_path = ['/bin','/usr/bin'],
+  $user     = undef,
+  $group    = undef,
 ) {
 
   # Shell command line
@@ -84,7 +85,7 @@ define gnu_build_system::make (
     exec { "touch ${creates_path}":
       user        => $user,
       group       => $group,
-      path        => ['/bin','/usr/bin'],
+      path        => $bin_path,
       subscribe   => Exec["${path}/${command}"],
       refreshonly => true,
     }
